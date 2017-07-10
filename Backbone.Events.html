@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='bower_components/underscore/underscore.js'></script>
+	<script src='bower_components/backbone/backbone.js'></script>
+</head>
+<body>
+	
+	<script>
+		var object = {};
+		_.extend(object,Backbone.Events);
+
+		object.on('alert',function(msg){
+			alert('Triggered' + msg);
+		});
+
+		object.trigger('alert'," an event");
+
+
+		//on
+		book.on("change:title change:author",function(){});
+		proxy.on("all",function(eventName){
+			object.trigger(eventName);
+		});
+
+		book.on({
+			"change:title":titleView.update,
+			"change:author":authorPane.update,
+			"destroy":bookView.remove
+		});
+
+		//off
+		object.off("change",onChange);
+		object.off("change");
+		object.off(null,onChange);
+		object.off(null,null,context);
+		object.off();
+
+
+		//listenTo
+		//listenTo允许object来跟踪这个特定事件,并且可以以后一次性全部移除她们,callback总是在object上下文环境中被调用.
+		object.listenTo(other,event,callback);
+		view.listenTo(model,'change',view.render);
+
+		//stopListening
+		object.stopListening([other],[event],[callback]);
+
+		//litstenToOnce
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

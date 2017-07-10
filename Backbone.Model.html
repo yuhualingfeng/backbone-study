@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='bower_components/underscore/underscore.js'></script>
+	<script src='bower_components/backbone/backbone.js'></script>
+</head>
+<body>
+	
+	<script>
+
+	var Model =Backbone.Model.extend({
+		name:'yuhualingfeng'
+
+	},{name:1});
+
+	var model = new Model({company:'lenovo'});
+
+
+
+	model.on('change:color',function(model,color){
+		alert(color);
+	});
+
+
+
+
+	model.set('color','red');
+
+	alert('cid:'+model.cid);
+	alert('id:'+model.id);
+
+
+	// Backbone.sync = function(method,model){
+
+	// 	var m= method;
+	// };
+
+	var book = new Backbone.Model({
+		title:"the Rough Riders",
+		author:"Theodore Roosevelt"
+	});
+
+	book.fetch();
+	book.save();
+	book.save({author: "Teddy"});
+
+
+	</script>
+</body>
+</html>
